@@ -1,0 +1,27 @@
+# Python
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.dll
+
+# Environment
+.env
+backend/.env
+
+# Data
+data/chroma_store/
+*.db
+
+# Node
+node_modules/
+.next/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
