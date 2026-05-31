@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import research, auth
+from app.db.database import create_tables
 
 app = FastAPI(
     title="ResearchAI API",
@@ -15,6 +16,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")
+def startup():
+    create_tables()
+    print("✅ Database tables created")
 
 app.include_router(research.router, prefix="/api/research", tags=["Research"])
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
